@@ -1,7 +1,14 @@
 import React from 'react';
 import '../components/Header.css'
+import { useNavigate } from 'react-router-dom';
 
 export default function Header() {
+  const navigate = useNavigate();
+
+  const navigateToAdmin =()=>{
+    navigate('/Admin', {replace:true});
+  };
+
   return (
     <header className="header">
     <div className="logo">
@@ -10,11 +17,11 @@ export default function Header() {
     <nav className="nav">
       <ul>
         <li><a href="#">Home</a></li>
-        <li><a href="#">Courses</a></li>
+       
       </ul>
     </nav>
     <div className="auth">
-      <a href="#">Login / Signup</a>
+      <a href="#" onClick={navigateToAdmin}>Admin Login</a>
     </div>
   </header>
   )

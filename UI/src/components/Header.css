@@ -32,6 +32,9 @@
   
   /* Add a hover effect to change the color when hovered over */
   .nav a:hover, .auth a:hover {
-    color: #ffcc00; /* Change the color to your desired hover color */
+    color:black; /* Change the color to your desired hover color */
+    background-color:violet;
+    border-radius: 10px;
+    padding: 4px;
   }
   

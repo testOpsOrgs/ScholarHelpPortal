@@ -3,6 +3,8 @@ import Header from '../components/Header'
 import Footer from '../components/Footer'
 import { useState , useEffect} from 'react';
 import '../views/Home.css';
+import { useNavigate } from 'react-router-dom';
+
 
 
 
@@ -27,9 +29,13 @@ export default function Home() {
     };
   }, []);
 
+  const navigate = useNavigate();
+  const navigateToStart = () => {
+    navigate("/Page1", { replace: true });
+  };
 
   return (
-    <div>
+    <div className='main'>
         <Header></Header>
         <div className="main-content">
       <div className="photo-carousel">
@@ -40,7 +46,7 @@ export default function Home() {
         <p>
           This is a brief introduction to our site. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla nec justo eget ante aliquet suscipit.
         </p>
-        <button className="get-started-button">Get Started</button>
+        <button className="get-started-button" onClick={navigateToStart}>Get Started</button>
       </div>
     </div>
         <Footer></Footer>
