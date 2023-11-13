@@ -2,6 +2,9 @@ import React from 'react';
 import { useState } from 'react';
 import '../views/Admin.css';
 import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 import Header from '../components/Header';
 
@@ -269,14 +272,21 @@ const handleSubjectChange = (event) => {
   const handleUpload = () => {
     const formData = new FormData();
     formData.append('file', selectedFile);
-    const api=`/:${selectedYear}/:${selectedFile}/:${selectedSubject}`;
+    // const api=`/:${selectedYear}/:${selectedFile}/:${selectedSubject}`;
+    const api= 'http://localhost:3001/upload/data/2Y/sem1/devops/notes'
     console.log(api);
     axios.post(`${api}`, formData)
       .then((response) => {
         console.log(response.data);
+        toast.success(response.data, {
+          position: toast.POSITION.TOP_RIGHT,
+        });
       })
       .catch((error) => {
         console.log(error);
+        toast.success(error, {
+          position: toast.POSITION.BOTTOM_CENTER
+        });
       });
   };
 
@@ -331,6 +341,7 @@ const handleSubjectChange = (event) => {
         <button onClick={handleUpload}>Upload</button>
 
       </div>
+      <ToastContainer/>
 	</div>
   );
 }

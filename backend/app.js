@@ -5,7 +5,8 @@ import path from 'path';
 const app = express();
 import router from './routes/scholarRoutes.js';
 import File from './schema/adminUploadSchema.js';
-import 'dotenv/config'
+import 'dotenv/config';
+import cors from 'cors';
 
 import uploadRoute from './routes/uploadRoutes.js';
 // Set up MongoDB connection
@@ -17,7 +18,7 @@ db.once('open', () => {
 });
 
 
-
+app.use(cors());
 
 
 
