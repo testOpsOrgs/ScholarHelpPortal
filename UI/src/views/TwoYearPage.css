@@ -1,0 +1,29 @@
+/* TwoYearPage.css */
+.main-container {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	align-items: center;
+	height: 70vh; /* Adjust the height as needed */
+	padding: 20px; /* Add padding to the main container */
+  }
+  
+  .square {
+	width: 100px;
+	height: 100px;
+	background-color: #3498db; /* Set your desired background color */
+	border-radius: 8px; /* Optional: Add border-radius for rounded corners */
+	box-shadow: 0 0 10px rgba(52, 152, 219, 0.7); /* Initial glow effect */
+	transition: transform 0.3s, box-shadow 0.3s; /* Add transition for smooth hover effect */
+	margin-right: 20px; /* Add space between the squares */
+  }
+  
+  .square:last-child {
+	margin-right: 0; /* Remove margin for the last square in the row */
+  }
+  
+  .square:hover {
+	transform: scale(1.1); /* Increase size on hover */
+	box-shadow: 0 0 20px rgba(52, 152, 219, 1); /* Glow effect on hover */
+  }
+  

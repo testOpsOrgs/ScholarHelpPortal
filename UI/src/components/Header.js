@@ -5,8 +5,12 @@ import { useNavigate } from 'react-router-dom';
 export default function Header() {
   const navigate = useNavigate();
 
-  const navigateToAdmin =()=>{
-    navigate('/Admin', {replace:true});
+  const navigateToLogin =()=>{
+    navigate('/Login', {replace:true});
+  };
+
+  const navigateToHome = () => {
+    navigate("/", { replace: true });
   };
 
   return (
@@ -16,12 +20,12 @@ export default function Header() {
     </div>
     <nav className="nav">
       <ul>
-        <li><a href="#">Home</a></li>
+        <li><a href="/" onClick={navigateToHome}>Home</a></li>
        
       </ul>
     </nav>
     <div className="auth">
-      <a href="#" onClick={navigateToAdmin}>Admin Login</a>
+      <a href="/Login" onClick={navigateToLogin}>Admin Login</a>
     </div>
   </header>
   )

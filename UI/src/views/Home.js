@@ -30,8 +30,8 @@ export default function Home() {
   }, []);
 
   const navigate = useNavigate();
-  const navigateToStart = () => {
-    navigate("/Page1", { replace: true });
+  const navigateToYear = () => {
+    navigate("/Year", { replace: true });
   };
 
   return (
@@ -46,7 +46,7 @@ export default function Home() {
         <p>
           This is a brief introduction to our site. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla nec justo eget ante aliquet suscipit.
         </p>
-        <button className="get-started-button" onClick={navigateToStart}>Get Started</button>
+        <button className="get-started-button" onClick={navigateToYear}>Get Started</button>
       </div>
     </div>
         <Footer></Footer>
