@@ -15,6 +15,7 @@ export default function Login(){
 	  e.preventDefault();
 	  // Add logic to handle login (e.g., API call, authentication)
 	  console.log('Login submitted:', { username, password });
+	  navigateToAdmin();
 	};
 
 	const navigate = useNavigate();
@@ -48,7 +49,7 @@ export default function Login(){
 						required
 					/>
 					</div>
-					<button type="submit" onClick={navigateToAdmin}>Login</button>
+					<button type="submit" >Login</button>
 				</form>
 			</div>
 			<Footer/>
