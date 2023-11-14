@@ -1,17 +1,8 @@
 import React from 'react';
 import '../components/Header.css'
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 export default function Header() {
-  const navigate = useNavigate();
-
-  const navigateToLogin =()=>{
-    navigate('/Login', {replace:true});
-  };
-
-  const navigateToHome = () => {
-    navigate("/", { replace: true });
-  };
 
   return (
     <header className="header">
@@ -20,13 +11,21 @@ export default function Header() {
     </div>
     <nav className="nav">
       <ul>
-        <li><a href="/" onClick={navigateToHome}>Home</a></li>
+        <li>
+          <Link to='/'>Home</Link>
+        </li>
        
       </ul>
     </nav>
     <div className="auth">
-      <a href="/Login" onClick={navigateToLogin}>Admin Login</a>
+      <Link to ='/Login'> Admin Login</Link>
     </div>
+
+    <div className="register">
+      <Link to='/register'>Admin Register</Link>
+    </div>
+
+
   </header>
   )
 }

@@ -4,11 +4,19 @@ import multer from 'multer';
 import path from 'path';
 const app = express();
 import router from './routes/scholarRoutes.js';
-import File from './schema/adminUploadSchema.js';
+
 import 'dotenv/config';
 import cors from 'cors';
-
+import jwt from 'jsonwebtoken';
 import uploadRoute from './routes/uploadRoutes.js';
+import cookieParser from 'cookie-parser';
+import AdminModel from './schema/adminUploadModel.js';
+import bcrypt from 'bcryptjs'
+import AdminRouter from './routes/adminRoute.js';
+
+
+
+var salt = bcrypt.genSaltSync(10);
 // Set up MongoDB connection
 mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 const db = mongoose.connection;
@@ -18,16 +26,18 @@ db.once('open', () => {
 });
 
 
-app.use(cors());
-
-
+app.use(cors({credentials:true, origin:'http://localhost:3000'}));
+app.use(cookieParser())
 
 
 /////////////////////////////////////////////////
-const twoYearRoute = router;
-app.use('/',twoYearRoute);
+const userRoute = router;
+app.use('/',userRoute);
 const adminUploadRoute = uploadRoute;
 app.use('/',adminUploadRoute)
+const adminRouter = AdminRouter;
+app.use('/', adminRouter)
+
 
 
 console.log(process.env.PORT)
