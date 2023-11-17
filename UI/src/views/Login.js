@@ -2,32 +2,49 @@ import React from "react";
 import '../views/Login.css';
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import { useNavigate } from "react-router-dom";
-import { useState } from "react";
 
-export default function Login(){
+import { useState, useContext } from "react";
+import {UserContext} from "../UserContext.js" 
+import { Link } from "react-router-dom";
 
-	const [username, setUsername] = useState('');
-	const [password, setPassword] = useState('');
-  
-	// Function to handle form submission
-	const handleSubmit = (e) => {
-	  e.preventDefault();
-	  // Add logic to handle login (e.g., API call, authentication)
-	  console.log('Login submitted:', { username, password });
-	  navigateToAdmin();
-	};
+const Login = ()=>{
+    const [username, setUsername] = useState('')
+    const [password, setPassword] = useState('')
+    const [redirect, setRedirect] = useState(false); 
+    const {setUserInfo} =useContext(UserContext);
 
-	const navigate = useNavigate();
+    const handleLogin =async (e)=>{
+        e.preventDefault()
 
-	const navigateToAdmin =()=>{
-	  navigate('/Admin', {replace:true});
-	};
+        const response = await fetch('http://localhost:4000/login',{
+            method:'POST',
+            body:JSON.stringify({username,password}),
+            headers:{'Content-Type':'application/json'},
+            credentials:'include'
+        })
+        if(response.ok){
+
+            response.json().then(userInfo=>{
+                setUserInfo(userInfo)
+                setRedirect(true);
+            })
+        }else{
+            alert("Invalid Credentials")
+        }
+    }
+
+    if(redirect){
+        return(
+            <Link to={'/Admin'} />
+        )
+    }
+
+
 	return(
 		<div>
 			<Header/>
 			<div className="login-container">
-				<form className="login-form" onSubmit={handleSubmit}>
+				<form className="login-form" onSubmit={handleLogin}>
 					<h2 className="head">Login</h2>
 					<div className="form-group">
 					<label htmlFor="username">Username</label>
@@ -57,3 +74,5 @@ export default function Login(){
 
 	);
 }
+
+export default Login
