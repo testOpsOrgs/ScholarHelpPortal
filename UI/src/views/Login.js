@@ -36,8 +36,9 @@ const Login = ()=>{
 	const navigate = useNavigate();
 
     if(redirect){
-            navigate("/Admin",{replace:true});
-		
+        return(
+            navigate("/Admin",{replace:true})
+		)
     }
 
 

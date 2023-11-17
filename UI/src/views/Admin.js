@@ -15,13 +15,13 @@ let options=[
   {
     year:"2Y",
     semesters:[
-      {semester:'First',
+      {semester:'sem1',
         subjects:[
           {
-            subject:"2 A 1"
+            subject:"devops"
           },
           {
-            subject:"2 A 2"
+            subject:"os"
           },
           {
             subject:"2 A 3"
@@ -225,6 +225,7 @@ let options=[
 const [selectedYear, setSelectedYear] = useState(options[0].year);
 const [selectedSemester, setSelectedSemester] = useState(options[0].semesters[0].semester);
 const [selectedSubject, setSelectedSubject] = useState(options[0].semesters[0].subjects[0].subject);
+const [selectedContent,setSelectedContent] = useState('notes');
 
 const onSelect = (selectedYear, selectedSemester, selectedSubject) => {
   // Define your logic for handling the selected year, semester, and subject here
@@ -257,6 +258,13 @@ const handleSubjectChange = (event) => {
   setSelectedSubject(selectedSubject);
   onSelect(selectedYear, selectedSemester, selectedSubject);
 };
+
+const handleContentChange = (event) =>{
+  const selectedContent = event.target.value;
+  setSelectedContent(selectedContent);
+  console.log(selectedContent);
+
+}
 
 
 
@@ -331,12 +339,24 @@ const handleSubjectChange = (event) => {
               ))}
           </select>
         </div>
+        <div className='content'>
+          <label htmlFor="content">Content Type:</label>
+          <select id="contentType" value={selectedContent} onChange={handleContentChange}>
+            <option value="notes" key="notes">Notes</option>
+            <option value="paper" key="paper">Paper</option>
+
+          </select>
+          
+
+        </div>
 
         <div className='upload'>
           <label htmlFor="upload">Upload Content:</label>
           <input type="file" onChange={handleFileUpload} />
 
         </div>
+
+       
 
         <button onClick={handleUpload}>Upload</button>
 

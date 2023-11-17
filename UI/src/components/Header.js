@@ -32,9 +32,7 @@ export default function Header() {
 
   return (
     <header className="header">
-    <div className="logo">
-      <img src="logo.png" alt="Logo" />
-    </div>
+   
     <nav className="nav">
       <ul>
         <li>
@@ -47,8 +45,8 @@ export default function Header() {
 
     {username && (
       <>
-        <Link to='/Admin'>{`welcome ${username}`}</Link>
-        <a href="" onClick={logout}>logout</a> 
+        <Link  className="user" to='/Admin'>{`Welcome! Mr.${username}`}</Link>
+        <a  className="logout" href="" onClick={logout}>Logout</a> 
       </>
     )}
 
@@ -59,7 +57,7 @@ export default function Header() {
         </div>
 
         <div className="register">
-          <Link to='/register'>Admin Register</Link>
+          <Link className="logout" to='/register'>Admin Register</Link>
         </div>
       </>
     )
