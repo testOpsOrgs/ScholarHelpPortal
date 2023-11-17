@@ -1,10 +1,11 @@
 import React from 'react';
 import '../components/Header.css'
-import { Link } from 'react-router-dom';
+import { Link} from 'react-router-dom';
 import { UserContext } from '../UserContext';
 import { useContext, useEffect } from 'react';
 
 export default function Header() {
+  
 
   const {setUserInfo, userInfo} = useContext(UserContext)
     useEffect(()=>{
@@ -24,8 +25,9 @@ export default function Header() {
         method:'POST',
         credentials:'include'
       })
-
+      
       setUserInfo(null)
+    
     }
 
   const username = userInfo?.username
@@ -46,7 +48,7 @@ export default function Header() {
     {username && (
       <>
         <Link  className="user" to='/Admin'>{`Welcome! Mr.${username}`}</Link>
-        <a  className="logout" href="" onClick={logout}>Logout</a> 
+        <a  className="logout" href="/" onClick={logout}>Logout</a> 
       </>
     )}
 

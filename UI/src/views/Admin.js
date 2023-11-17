@@ -6,11 +6,11 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 
+
 import Header from '../components/Header';
 
 export default function Admin() {
-
-   
+ 
 let options=[
   {
     year:"2Y",
@@ -298,7 +298,7 @@ const handleContentChange = (event) =>{
       });
   };
 
-
+  
   return (
     <div className='AdminPage'>
       <Header>/</Header>
