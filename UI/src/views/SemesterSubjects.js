@@ -102,11 +102,15 @@ export default function SemesterSubjects() {
         <h2>Semester: {semester}</h2>
         <div>
           <h3>Subjects</h3>
-          <ul>
+          <ol>
             {Object.values(semesterSubjects).map((subject, index) => (
-              <li key={index}>{subject}</li>
+              <h2><li key={index}>
+                <div className='subject'>
+                    {subject}
+                </div>
+              </li></h2>
             ))}
-          </ul>
+          </ol>
         </div>
       </div>
       <Footer />
