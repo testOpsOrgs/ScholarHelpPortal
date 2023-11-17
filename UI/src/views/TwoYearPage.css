@@ -26,4 +26,8 @@
 	transform: scale(1.1); /* Increase size on hover */
 	box-shadow: 0 0 20px rgba(52, 152, 219, 1); /* Glow effect on hover */
   }
+
+  .header2Y{
+	text-align: center;
+  }
   

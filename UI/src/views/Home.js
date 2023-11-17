@@ -31,7 +31,7 @@ export default function Home() {
 
   const navigate = useNavigate();
   const navigateToYear = () => {
-    navigate("/Year", { replace: true });
+    navigate("/Year");
   };
 
   return (
