@@ -35,9 +35,9 @@ export default function Home() {
   };
 
   return (
-    <div className='main'>
+    <div className='mainhome'>
         <Header></Header>
-        <div className="main-content">
+        <div className="main-contenthome">
       <div className="photo-carousel">
       <img src={images[currentImageIndex]} alt="Carousel" />
       </div>
