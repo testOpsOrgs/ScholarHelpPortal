@@ -1,6 +1,7 @@
 import React from 'react'
 import { useEffect, useState } from 'react';
-import { json, useParams } from 'react-router-dom';
+import {  useParams } from 'react-router-dom';
+
 
 
 export default function Download() {
@@ -10,10 +11,12 @@ export default function Download() {
     const [loading, setLoading] = useState(true);
 
 
+
   
     useEffect(() => {
+       
       const fetchFile = async () => {
-        const y="2y";
+        let y="2y";
         if(year=='year4'){
             y='4y';
         }
@@ -35,7 +38,15 @@ export default function Download() {
         // Any cleanup code goes here
       };
     }, []);
-  
+
+    const generateDownloadUrl = (fileName) => {
+        let y="2y";
+        if(year=='year4'){
+            y='4y';
+        }
+
+        return `http://localhost:4000/data/${y}/${semester}/${subject}/${type}/${fileName}`;
+      };
 
   return (
     <div>
@@ -48,7 +59,13 @@ export default function Download() {
           {data && (
             <ul>
                 {data.folderItems.map((fileName, index) => (
-                  <li key={index}>{fileName}</li>
+                  
+                  <li key={index}>
+                    <a href={generateDownloadUrl(fileName)} download={fileName}>
+                    {fileName}
+                    </a>
+                    </li>
+                
                 ))}
             </ul>
           )}
