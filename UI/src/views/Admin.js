@@ -5,13 +5,12 @@ import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-import { UserContext } from '../UserContext';
+
 import Header from '../components/Header';
-import { useContext } from 'react';
-import { useEffect } from 'react';
+
 
 export default function Admin() {
-   const {user}= useContext(UserContext);
+
  
 let options=[
   {
@@ -299,13 +298,6 @@ const handleContentChange = (event) =>{
         });
       });
   };
-
-  useEffect(() => {
-    if (!user) {
-      // Redirect to login page if not authenticated
-      window.location.href = '/Login'; // Replace with your login page route
-    }
-  }, [user]);
 
   
   return (
