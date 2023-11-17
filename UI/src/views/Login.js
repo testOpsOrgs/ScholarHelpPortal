@@ -3,9 +3,9 @@ import '../views/Login.css';
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 
-import { useState, useContext } from "react";
+import { useState, useContext} from "react";
 import {UserContext} from "../UserContext.js" 
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Login = ()=>{
     const [username, setUsername] = useState('')
@@ -33,10 +33,11 @@ const Login = ()=>{
         }
     }
 
+	const navigate = useNavigate();
+
     if(redirect){
-        return(
-            <Link to={'/Admin'} />
-        )
+            navigate("/Admin",{replace:true});
+		
     }
 
 
