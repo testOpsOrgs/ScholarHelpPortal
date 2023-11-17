@@ -7,7 +7,7 @@ export default function TwoYearPage(){
 	return(
 		<div>
 			<Header/>
-			<div className="main-container">
+			<div className="main-container2Y">
 				<div className="square"> 1</div>
 				<div className="square"> 2</div>
 				<div className="square"> 3</div>
