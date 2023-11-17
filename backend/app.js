@@ -10,7 +10,6 @@ import cors from 'cors';
 import jwt from 'jsonwebtoken';
 import uploadRoute from './routes/uploadRoutes.js';
 import cookieParser from 'cookie-parser';
-import bcrypt from 'bcryptjs'
 import AdminRouter from './routes/adminRoute.js';
 import bodyParser from 'body-parser';
 
@@ -26,7 +25,7 @@ db.once('open', () => {
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended:true}))
-app.use(cors());
+app.use(cors({credentials:true, origin:'http://localhost:3000'}));
 app.use(cookieParser())
 
 
