@@ -101,7 +101,7 @@ export default function SemesterSubjects() {
         <h1>Welcome to the Landing Page</h1>
         <h2>Semester: {semester}</h2>
         <div>
-          <h3>Subjects</h3>
+          <h3>Courses</h3>
           <ol>
             {Object.values(semesterSubjects).map((subject, index) => (
               <h2><li key={index}>
