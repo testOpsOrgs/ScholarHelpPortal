@@ -282,7 +282,7 @@ const handleContentChange = (event) =>{
     const formData = new FormData();
     formData.append('file', selectedFile);
     // const api=`/:${selectedYear}/:${selectedFile}/:${selectedSubject}`;
-    const api= 'http://localhost:4000/upload/data/2Y/sem1/devops/notes'
+    const api= 'http://localhost:3001/upload/data/2Y/sem1/devops/notes'
     console.log(api);
     axios.post(`${api}`, formData)
       .then((response) => {
