@@ -8,20 +8,21 @@ import 'react-toastify/dist/ReactToastify.css';
 
 import Header from '../components/Header';
 
+
 export default function Admin() {
 
-   
+ 
 let options=[
   {
     year:"2Y",
     semesters:[
-      {semester:'First',
+      {semester:'sem1',
         subjects:[
           {
-            subject:"2 A 1"
+            subject:"devops"
           },
           {
-            subject:"2 A 2"
+            subject:"os"
           },
           {
             subject:"2 A 3"
@@ -225,6 +226,7 @@ let options=[
 const [selectedYear, setSelectedYear] = useState(options[0].year);
 const [selectedSemester, setSelectedSemester] = useState(options[0].semesters[0].semester);
 const [selectedSubject, setSelectedSubject] = useState(options[0].semesters[0].subjects[0].subject);
+const [selectedContent,setSelectedContent] = useState('notes');
 
 const onSelect = (selectedYear, selectedSemester, selectedSubject) => {
   // Define your logic for handling the selected year, semester, and subject here
@@ -258,6 +260,13 @@ const handleSubjectChange = (event) => {
   onSelect(selectedYear, selectedSemester, selectedSubject);
 };
 
+const handleContentChange = (event) =>{
+  const selectedContent = event.target.value;
+  setSelectedContent(selectedContent);
+  console.log(selectedContent);
+
+}
+
 
 
 /****************************Uploading********************************* */
@@ -273,7 +282,7 @@ const handleSubjectChange = (event) => {
     const formData = new FormData();
     formData.append('file', selectedFile);
     // const api=`/:${selectedYear}/:${selectedFile}/:${selectedSubject}`;
-    const api= 'http://localhost:3001/upload/data/2Y/sem1/devops/notes'
+    const api= 'http://localhost:4000/upload/data/2Y/sem1/devops/notes'
     console.log(api);
     axios.post(`${api}`, formData)
       .then((response) => {
@@ -290,7 +299,7 @@ const handleSubjectChange = (event) => {
       });
   };
 
-
+  
   return (
     <div className='AdminPage'>
       <Header>/</Header>
@@ -331,12 +340,24 @@ const handleSubjectChange = (event) => {
               ))}
           </select>
         </div>
+        <div className='content'>
+          <label htmlFor="content">Content Type:</label>
+          <select id="contentType" value={selectedContent} onChange={handleContentChange}>
+            <option value="notes" key="notes">Notes</option>
+            <option value="paper" key="paper">Paper</option>
+
+          </select>
+          
+
+        </div>
 
         <div className='upload'>
           <label htmlFor="upload">Upload Content:</label>
           <input type="file" onChange={handleFileUpload} />
 
         </div>
+
+       
 
         <button onClick={handleUpload}>Upload</button>
 

@@ -1,10 +1,11 @@
 import React from 'react';
 import '../components/Header.css'
-import { Link } from 'react-router-dom';
+import { Link} from 'react-router-dom';
 import { UserContext } from '../UserContext';
 import { useContext, useEffect } from 'react';
 
 export default function Header() {
+  
 
   const {setUserInfo, userInfo} = useContext(UserContext)
     useEffect(()=>{
@@ -24,17 +25,16 @@ export default function Header() {
         method:'POST',
         credentials:'include'
       })
-
+      
       setUserInfo(null)
+    
     }
 
   const username = userInfo?.username
 
   return (
     <header className="header">
-    <div className="logo">
-      <img src="logo.png" alt="Logo" />
-    </div>
+   
     <nav className="nav">
       <ul>
         <li>
@@ -47,8 +47,8 @@ export default function Header() {
 
     {username && (
       <>
-        <Link to='/Admin'>{`welcome ${username}`}</Link>
-        <a href="" onClick={logout}>logout</a> 
+        <Link  className="user" to='/Admin'>{`Welcome! Mr.${username}`}</Link>
+        <a  className="logout" href="/" onClick={logout}>Logout</a> 
       </>
     )}
 
@@ -59,7 +59,7 @@ export default function Header() {
         </div>
 
         <div className="register">
-          <Link to='/register'>Admin Register</Link>
+          <Link className="logout" to='/register'>Admin Register</Link>
         </div>
       </>
     )

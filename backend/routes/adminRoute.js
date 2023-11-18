@@ -6,7 +6,7 @@ import jwt from 'jsonwebtoken';
 import cookieParser from 'cookie-parser';
 
 
-var salt = bcrypt.genSaltSync(10);
+let salt = bcrypt.genSaltSync(10);
 
 AdminRouter.get("/work",(req,res)=>{
     res.json('something good')
