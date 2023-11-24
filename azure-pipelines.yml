@@ -9,38 +9,26 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
+jobs:
+- job: BuildAndDeploy
+  displayName: 'Build and Deploy'
+  steps:
+  - task: NodeTool@0
+    inputs:
+      versionSpec: '14.x'
+    displayName: 'Install Node.js'
 
-stages:
-- stage: Build
-  jobs:
-  - job: BuildFrontend
-    displayName: 'Buiuld Frontend' 
-    steps:
-    - task: NodeTool@0
-      inputs:
-        versionSpec: '14.x'
-      displayName: 'Install Node.js'
+  - script: |
+      cd UI
+      npm install
+      npm run build
+    displayName: 'Build Frontend'
 
-    - script: |
-        cd UI
-        npm install
-        npm run build
-      displayName: 'Build Frontend'
-  
-  - job: BuildBackend
+  - script: |
+      cd ../backend  # Adjust the path if needed
+      npm install
+      npm run build
     displayName: 'Build Backend'
-    steps:
-    - task: NodeTool@0
-      inputs:
-        versionSpec: '14.x'
-      displayName: 'Install Node.js'
-
-    - script: |
-        cd backend
-        npm install
-        npm run build
-      displayName: 'Build Backend'
-
 
 
 
